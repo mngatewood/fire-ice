@@ -5,6 +5,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { addHouses } from '../../actions';
 import { getHouseData } from '../../api/apiCalls/getHouseData';
+import { HouseContainer } from '../HouseContainer/HouseContanier';
 
 class App extends Component {
 

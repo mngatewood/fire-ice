@@ -1,19 +1,22 @@
-import React from ‘react’;
-import PropTypes from ‘prop-types’;
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-export const HouseContainer = () => {
+export const HouseContainer = (houses) => {
+  console.log(houses)
 
-  return(
-    
-  )
+
+  return("hello")
+
 }
 
-export const mapStateToProps = state => ({
-  houses: state.houses,
+const mapStateToProps = state => ({
+  houses: state.houses
 });
 
-Stuff.propTypes = {
+HouseContainer.propTypes = {
   houses: PropTypes.array,
 };
 
-export default withRouter(connect(MapStateToProps)(HouseContainer));
+export default connect(mapStateToProps)(HouseContainer);
