@@ -4,7 +4,14 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { fakeAction } from '../../actions';
+import { getHouseData } from '../../api/apiCalls';
+
 class App extends Component {
+
+  async componentDidMount() {
+    const houseData = await getHouseData();
+    console.log(houseData);
+  }
 
   render() {
     return (
