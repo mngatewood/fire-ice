@@ -1,8 +1,8 @@
-export const getSwornMembers = (housesData) => {
+export const getSwornMembers = async (housesData) => {
+  let updatedHousesDataArray = []
   const urlRoot = "http://localhost:3001/api/v1/character/";
   const updatedHousesData = housesData.map( async house => {
-    console.log(house);
-    const membersArray = house.swornMembers;
+    const membersArray = await house.swornMembers;
     const promises = membersArray.map(async member => {
       const urlQuery = member.substr(49);
       const url = `${urlRoot}${urlQuery}`;
@@ -12,7 +12,6 @@ export const getSwornMembers = (housesData) => {
       return memberDetails;
     });
     const swornMembers = await Promise.all(promises);
-    console.log(swornMembers);
     const updatedHouse = {
       name: house.name,
       founded: house.founded,
@@ -23,10 +22,12 @@ export const getSwornMembers = (housesData) => {
       words: house.words,
       swornMembers: [swornMembers]
     };
-    console.log(updatedHouse)
+    updatedHousesDataArray = await [...updatedHousesDataArray, updatedHouse];
+    console.log(updatedHousesDataArray);
+    return updatedHousesDataArray;
   });
-  return housesData;
-  // return Promise.all(promises);
+  console.log(updatedHousesDataArray);
+  return updatedHousesDataArray;
 }
 
 
