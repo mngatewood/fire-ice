@@ -30,6 +30,7 @@ class App extends Component {
           <img src={logo} className='App-logo' alt='logo' />
           <h2>Welcome to Westeros</h2>
           <img 
+            id="wolf"
             src={wolf} 
             alt="loading gif" 
             hidden={!this.state.isLoading}/>
