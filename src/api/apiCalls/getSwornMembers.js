@@ -1,6 +1,6 @@
 export const getSwornMembers = (housesData) => {
   const urlRoot = "http://localhost:3001/api/v1/character/";
-  const updatedHousesData = housesData.map( house => ({
+  const updatedHousesData = housesData.map( async house => {
     console.log(house);
     const membersArray = house.swornMembers;
     const promises = membersArray.map(async member => {
@@ -8,10 +8,11 @@ export const getSwornMembers = (housesData) => {
       const url = `${urlRoot}${urlQuery}`;
       const response = await fetch(url);
       const memberData = await response.json();
-      const memberDetails = { name: memberData.name, died: memberData.died };
-      console.log(memberDetails);
+      const memberDetails = await { name: memberData.name, died: memberData.died };
+      return memberDetails;
     });
-    const swornMembers = (Promise.all(promises));
+    const swornMembers = await Promise.all(promises);
+    console.log(swornMembers);
     const updatedHouse = {
       name: house.name,
       founded: house.founded,
@@ -20,10 +21,11 @@ export const getSwornMembers = (housesData) => {
       coatOfArms: house.coatOfArms,
       ancestralWeapons: house.ancestralWeapons,
       words: house.words,
-      swornMembers: []
-    }
+      swornMembers: [swornMembers]
+    };
+    console.log(updatedHouse)
   });
-  return houseData;
+  return housesData;
   // return Promise.all(promises);
 }
 
