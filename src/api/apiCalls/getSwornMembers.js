@@ -1,5 +1,6 @@
 export const getSwornMembers = async (housesData) => {
-  let updatedHousesDataArray = []
+  let updatedHousesDataArray = await [];
+  console.log(updatedHousesDataArray);
   const urlRoot = "http://localhost:3001/api/v1/character/";
   const updatedHousesData = housesData.map( async house => {
     const membersArray = await house.swornMembers;
@@ -26,10 +27,6 @@ export const getSwornMembers = async (housesData) => {
     console.log(updatedHousesDataArray);
     return updatedHousesDataArray;
   });
-  console.log(updatedHousesDataArray);
-  return updatedHousesDataArray;
+  // console.log(updatedHousesDataArray);
+  // return updatedHousesDataArray;
 }
-
-
-
-
