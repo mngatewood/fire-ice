@@ -6,7 +6,7 @@ export const getHouseData = async() => {
     const response = await fetch(url);
     const houseData = await response.json();
     const houseDataWithSwornMembers = await getSwornMembers(houseData);
-    console.log(houseDataWithSwornMembers);
+    // console.log(houseDataWithSwornMembers);
     return houseData;
   } catch (error) {
     throw Error("Error retrieving house data" + error.message);
