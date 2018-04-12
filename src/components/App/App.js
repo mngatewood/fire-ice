@@ -26,6 +26,7 @@ class App extends Component {
           }}> FAKE ACTION</button>
         </div>
         <div className='Display-info'>
+          <HouseContainer />
         </div>
       </div>
     );
