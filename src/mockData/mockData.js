@@ -1,7 +1,6 @@
 
 
 export const mockResponse = [
-
   { name: "House Corbray of Heart's Home" },
   { name: "House Dayne of Starfall" },
   { name: "House Lannister of Casterly Rock" },
@@ -11,6 +10,5 @@ export const mockResponse = [
   { name: "House Tarly of Horn Hill" },
   { name: "House Stark of Winterfell" },
   { name: "House Targaryen of King's Landing" }
-
-]
+];
 
