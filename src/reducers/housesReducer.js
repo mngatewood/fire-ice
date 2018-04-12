@@ -1,7 +1,7 @@
 export const housesReducer = (state=[], action) => {
   switch (action.type) {
   case 'ADD_HOUSES':
-    return [...action.houses]
+    return [...state, ...action.houses]
   default:
     return state;
   }
