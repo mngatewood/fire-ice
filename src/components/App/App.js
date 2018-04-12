@@ -3,7 +3,7 @@ import PropTypes, { shape, func, string } from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { fakeAction } from '../../actions';
+import { addHouses } from '../../actions';
 import { getHouseData } from '../../api/apiCalls/getHouseData';
 
 class App extends Component {
@@ -11,6 +11,7 @@ class App extends Component {
   async componentDidMount() {
     const houseData = await getHouseData();
     console.log(houseData);
+    this.props.addHouses(houseData);
   }
 
   render() {
@@ -32,12 +33,14 @@ class App extends Component {
 }
 
 App.propTypes = {
-  fake: shape({ fake: string }),
-  fakeAction: func.isRequired
+  addHouses: func,
+  getHouseData: func
 };
 
-const mapStateToProps = ({ fake }) => ({ fake });
-const mapDispatchToProps = dispatch => ({ fakeAction:
-  () => dispatch(fakeAction())
+// const mapStateToProps = ({ fake }) => ({ fake });
+
+const mapDispatchToProps = dispatch => ({ 
+  addHouses: houses => dispatch(addHouses(houses))
 });
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+export default connect(null, mapDispatchToProps)(App);
