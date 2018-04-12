@@ -27,6 +27,6 @@ export const getSwornMembers = async (housesData) => {
     console.log(updatedHousesDataArray);
     return updatedHousesDataArray;
   });
-  // console.log(updatedHousesDataArray);
-  // return updatedHousesDataArray;
+  console.log(updatedHousesDataArray);
+  return updatedHousesDataArray;
 }
