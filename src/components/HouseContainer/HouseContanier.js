@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { House } from '../House/House';
 
 const HouseContainer = (props) => {
-  props.houses.map(house => {
+  const displayHouses = props.houses.map(house => {
     return <House 
       key={house.name}
       name={house.name}
@@ -17,7 +17,8 @@ const HouseContainer = (props) => {
     />;
   });
 
-  return <div>
+  return <div className='Container'>
+    {displayHouses}
   </div>;
 
 };
